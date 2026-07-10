@@ -3,240 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title is the most important part for tricking filters -->
-    <title>Core API v4.2.1 | Documentation Reference Manual</title>
+    <title>GitHub Pages documentation</title>
     <style>
-        :root {
-            --bg-primary: #1e1e24;
-            --bg-sidebar: #141419;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --border: #334155;
-        }
-
         body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Sidebar Mock Documentation Navigation */
-        .sidebar {
-            width: 260px;
-            background-color: var(--bg-sidebar);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
+            font-family: sans-serif;
+            background-color: #ffffff;
+            color: #333333;
             padding: 20px;
-            box-sizing: border-box;
+            text-align: center;
         }
-
-        .logo {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--accent);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .version-badge {
-            font-size: 10px;
-            background: #22c55e20;
-            color: #4ade80;
-            padding: 2px 6px;
-            border-radius: 4px;
-            border: 1px solid #22c55e40;
-        }
-
-        .nav-section {
-            margin-bottom: 20px;
-        }
-
-        .nav-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .nav-link {
-            font-size: 13px;
-            color: var(--text-main);
-            text-decoration: none;
-            display: block;
-            padding: 6px 8px;
-            border-radius: 4px;
-            margin-bottom: 4px;
-            cursor: pointer;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background-color: #334155;
-            color: var(--accent);
-        }
-
-        /* Main Content Panel */
-        .main-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            background-color: var(--bg-primary);
-        }
-
-        .top-bar {
-            height: 50px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            padding: 0 30px;
-            font-size: 13px;
-            color: var(--text-muted);
-            justify-content: space-between;
-        }
-
-        .doc-body {
-            padding: 30px;
-            flex-grow: 1;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        h1 {
-            font-size: 28px;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* Hidden Game Container masquerading as a coding terminal console */
-        .game-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            height: 540px;
-            background-color: #0f172a;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
-        }
-
-        .terminal-header {
-            height: 35px;
-            background-color: #0b0f19;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            justify-content: space-between;
-        }
-
-        .terminal-dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #ef4444;
-        }
-        .dot:nth-child(2) { background-color: #eab308; }
-        .dot:nth-child(3) { background-color: #22c55e; }
-
-        .terminal-title {
-            font-family: monospace;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        /* The actual game element frame */
         iframe {
-            width: 100%;
-            height: calc(100% - 35px);
             border: none;
-            background: #000;
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+            margin: 40px 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR MOCK DOCS NAVIGATION -->
-    <div class="sidebar">
-        <div class="logo">
-            <span>DEV_CORE_SDK</span>
-            <span class="version-badge">v4.2.1</span>
-        </div>
-        
-        <div class="nav-section">
-            <div class="nav-title">Getting Started</div>
-            <div class="nav-link">Overview & Architecture</div>
-            <div class="nav-link active">Runtime Initialization</div>
-            <div class="nav-link">Authentication Protocols</div>
-        </div>
-
-        <div class="nav-section">
-            <div class="nav-title">Core Modules</div>
-            <div class="nav-link">Data Streams Engine</div>
-            <div class="nav-link">Canvas2D Rendering Wrapper</div>
-            <div class="nav-link">Client State Mutators</div>
-            <div class="nav-link">Cryptographic Utilities</div>
-        </div>
-
-        <div class="nav-section">
-            <div class="nav-title">Deployment</div>
-            <div class="nav-link">WebHook Integrations</div>
-            <div class="nav-link">CORS Authorization Map</div>
-        </div>
+    <!-- Game 1: Moto X3M -->
+    <div>
+        <iframe src="https://html5.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c/" width="100%" height="600px" scrolling="no" allowfullscreen></iframe>
     </div>
 
-    <!-- MAIN INTERACTIVE SECTION -->
-    <div class="main-content">
-        <div class="top-bar">
-            <div>Docs / Getting Started / <span style="color: var(--text-main)">Runtime Initialization</span></div>
-            <div style="font-family: monospace;">Last built: Stable build pass</div>
-        </div>
+    <hr>
 
-        <div class="doc-body">
-            <h1>Runtime Initialization</h1>
-            <p>Execute the core JavaScript engine compiler loop directly within the sandboxed node wrapper environment below. Use arrow keys to interact with manual override threads if execution hangs.</p>
-        
+    <!-- Game 2: Geometry Dash (Scratch Edition) -->
+    <div>
+        <iframe src="https://scratch.mit.edu/projects/embed/105500895/" allowtransparency="true" width="485" height="402" scrolling="no" allowfullscreen></iframe>
+    </div>
 
-            <!-- HIDDEN MOTO X3M TERMINAL -->
-            <div class="game-wrapper">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div class="terminal-title">bash --run ./instance/engine_runtime_thread_x3m</div>
-                    <div></div>
-                </div>
-                <!-- Clean, unblocked raw canvas deployment frame -->
-                <iframe src="https://motox3monlineunblocked.github.io/" allowfullscreen></iframe>
-            </div>
+</body>
+</html>
+
+
 
 
             
