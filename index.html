@@ -3,54 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Stealth tab text -->
-    <title>GitHub Pages documentation</title>
+    <!-- Extremely boring, unclickable title disguise -->
+    <title>Index of /sys/bin/logs</title>
     <style>
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #ffffff; font-family: sans-serif; overflow: hidden; display: flex; flex-direction: column; }
-        .nav-header { background: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: 8px; display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .nav-btn { background: #ffffff; border: 1px solid #d0d7de; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; color: #24292f; font-weight: 500; white-space: nowrap; }
-        .nav-btn.active { background: #0969da; color: #ffffff; border-color: #0969da; }
-        .game-container { flex: 1; width: 100%; height: 100%; position: relative; }
-        iframe { border: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: none; }
-        iframe.active { display: block; }
+        html, body { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #ffffff; 
+            font-family: monospace; 
+            font-size: 13px;
+            color: #000000;
+            overflow: hidden; 
+            position: relative;
+        }
+        /* Fake generic text layout to display on load */
+        .fake-error-screen {
+            padding: 20px;
+            line-height: 1.5;
+            user-select: none;
+            cursor: default;
+        }
+        .fake-error-screen a {
+            color: #0000ee;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .game-container { 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%; 
+            z-index: 1;
+            background: #ffffff;
+            display: none;
+        }
+        .game-container.visible {
+            display: block;
+        }
+        iframe { 
+            border: none; 
+            width: 100%; 
+            height: 100%; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            display: none; 
+        }
+        iframe.active { 
+            display: block; 
+        }
+        /* Secret invisible corner tap target */
+        #secret-trigger {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            z-index: 99999;
+            background: transparent;
+            -webkit-tap-highlight-color: transparent;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Disguised Tab Buttons -->
-    <div class="nav-header">
-        <button class="nav-btn active" onclick="switchTab(0)">Docs_Main</button>
-        <button class="nav-btn" onclick="switchTab(1)">Docs_Run</button>
-        <button class="nav-btn" onclick="switchTab(2)">Docs_Fish</button>
-        <button class="nav-btn" onclick="switchTab(3)">Docs_Dash</button>
+    <!-- Secret invisible hot-corner (Top-Left of screen) -->
+    <div id="secret-trigger"></div>
+
+    <!-- The Camouflage Layer: Looks like a broken folder directory -->
+    <div class="fake-error-screen">
+        <h1>Index of /sys/bin/logs</h1>
+        <hr>
+        <pre>
+<a href="#">../</a>
+[TXT] <a href="#">manifest.json</a>             2026-07-11 11:59   1.2K
+[TXT] <a href="#">system_runtime.log</a>        2026-07-11 08:42  42.1K
+[DIR] <a href="#">cache/</a>                    2026-07-10 14:15     -  
+[DIR] <a href="#">config/</a>                   2026-07-11 09:11     -  
+        </pre>
+        <hr>
+        <address>Apache/2.4.41 (Ubuntu) Server at localhost Port 80</address>
     </div>
 
-    <div class="game-container">
-        <!-- Tab 1: Massive Main Arcade Catalog -->
+    <!-- The Hidden Game Vault -->
+    <div class="game-container" id="vault">
+        <!-- Game 1: Main Arcade Catalog -->
         <iframe class="active" src="https://motox3monlineunblocked.github.io/" allowfullscreen></iframe>
         
-        <!-- Tab 2: Run 3 -->
+        <!-- Game 2: Run 3 -->
         <iframe src="https://run3-coolmath.github.io/" allowfullscreen></iframe>
         
-        <!-- Tab 3: Tiny Fishing (Shielded) -->
+        <!-- Game 3: Tiny Fishing -->
         <iframe src="https://playxiagames.github.io/games/tiny-fishing/" sandbox="allow-scripts allow-same-origin allow-popups-to-escape-sandbox" allowfullscreen></iframe>
 
-        <!-- Tab 4: Geometry Dash (Blinded from detecting iframe) -->
+        <!-- Game 4: Geometry Dash (Blinded sandbox to block website redirects) -->
         <iframe src="https://geometrylite.github.io/" sandbox="allow-scripts allow-downloads" allowfullscreen></iframe>
     </div>
 
     <script>
-        function switchTab(index) {
-            const btns = document.querySelectorAll('.nav-btn');
-            const frames = document.querySelectorAll('iframe');
-            btns.forEach(b => b.classList.remove('active'));
-            frames.forEach(f => f.classList.remove('active'));
-            btns[index].classList.add('active');
-            frames[index].classList.add('active');
+        let lastTap = 0;
+        const trigger = document.getElementById('secret-trigger');
+        const vault = document.getElementById('vault');
+        const iframes = document.querySelectorAll('iframe');
+
+        // Detect Double Tap on the invisible top-left corner box
+        trigger.addEventListener('touchstart', function(e) {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 300 && tapLength > 0) {
+                activateSecretMenu();
+                e.preventDefault();
+            }
+            lastTap = currentTime;
+        });
+
+        // Double click backup for desktop testing
+        trigger.addEventListener('dblclick', function() {
+            activateSecretMenu();
+        });
+
+        function activateSecretMenu() {
+            // Prompt looks like an authentication check
+            const code = prompt("Enter terminal node connection index (0 to hide):");
+            
+            if (code === "0" || code === null || code === "") {
+                // Instantly lock everything back down and show the error log screen
+                vault.classList.remove('visible');
+            } else if (code === "1" || code === "2" || code === "3" || code === "4") {
+                // Reveal the vault and shift to the chosen index
+                vault.classList.add('visible');
+                
+                iframes.forEach(f => f.classList.remove('active'));
+                iframes[parseInt(code) - 1].classList.add('active');
+            }
         }
     </script>
 </body>
 </html>
+
 
 
 
