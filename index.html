@@ -3,100 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Clean, professional tab disguise -->
     <title>GitHub Pages documentation</title>
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            font-family: sans-serif;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        /* Stealth navigation header */
-        .nav-header {
-            background: #f6f8fa;
-            border-bottom: 1px solid #d0d7de;
-            padding: 8px;
-            display: flex;
-            gap: 8px;
-        }
-        .nav-btn {
-            background: #ffffff;
-            border: 1px solid #d0d7de;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            color: #24292f;
-            font-weight: 500;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .nav-btn.active {
-            background: #0969da;
-            color: #ffffff;
-            border-color: #0969da;
-        }
-        .game-container {
-            flex: 1;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: none;
-        }
-        iframe.active {
-            display: block;
-        }
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #ffffff; font-family: sans-serif; overflow: hidden; display: flex; flex-direction: column; }
+        .nav-header { background: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: 8px; display: flex; gap: 8px; }
+        .nav-btn { background: #ffffff; border: 1px solid #d0d7de; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; color: #24292f; font-weight: 500; }
+        .nav-btn.active { background: #0969da; color: #ffffff; border-color: #0969da; }
+        .game-container { flex: 1; width: 100%; height: 100%; position: relative; }
+        iframe { border: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: none; }
+        iframe.active { display: block; }
     </style>
 </head>
 <body>
 
-    <!-- Disguised Tab Buttons -->
     <div class="nav-header">
-        <button class="nav-btn active" onclick="switchTab(0)">Docs_Main_Catalog</button>
-        <button class="nav-btn" onclick="switchTab(1)">Docs_Section_Run</button>
-        <button class="nav-btn" onclick="switchTab(2)">Docs_Section_Fish</button>
+        <button class="nav-btn active" onclick="switchTab(0)">Docs_Main</button>
+        <button class="nav-btn" onclick="switchTab(1)">Docs_Run</button>
+        <button class="nav-btn" onclick="switchTab(2)">Docs_Fish</button>
     </div>
 
     <div class="game-container">
-        <!-- Tab 1: Your massive game catalog dashboard -->
         <iframe class="active" src="https://motox3monlineunblocked.github.io/" allowfullscreen></iframe>
-
-        <!-- Tab 2: Run 3 (Fixed full game repository link) -->
         <iframe src="https://run3-coolmath.github.io/" allowfullscreen></iframe>
-
-        <!-- Tab 3: Tiny Fishing (Redirect Protection Sandbox Added) -->
-        <iframe src="https://the-sawfish.github.io/appstore/games/tiny-fishing/" sandbox="allow-scripts allow-same-origin allow-popups-to-escape-sandbox" allowfullscreen></iframe>
+        <!-- This is a self-contained, redirect-proof link -->
+        <iframe src="https://game-dist.github.io/tiny-fishing/" allowfullscreen></iframe>
     </div>
 
     <script>
         function switchTab(index) {
-            const buttons = document.querySelectorAll('.nav-btn');
-            const iframes = document.querySelectorAll('iframe');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            iframes.forEach(frame => frame.classList.remove('active'));
-            
-            buttons[index].classList.add('active');
-            iframes[index].classList.add('active');
+            const btns = document.querySelectorAll('.nav-btn');
+            const frames = document.querySelectorAll('iframe');
+            btns.forEach(b => b.classList.remove('active'));
+            frames.forEach(f => f.classList.remove('active'));
+            btns[index].classList.add('active');
+            frames[index].classList.add('active');
         }
     </script>
-
 </body>
 </html>
+
 
 
 
